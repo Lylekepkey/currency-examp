@@ -2,8 +2,9 @@ const apiKey = "67863ce98cdd93d07506a464";
 
 // fetch currency options
 
-fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`)
-  .then((response) => response.json())
+fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`) // provides a JavaScript interface for accessing and manipulating
+                                                            // parts of the protocol such as requests and responses
+  .then((response) => response.json())  // json is storing and transporting data
   .then((data) => {
     const { supported_codes } = data;
     const selectElements = document.querySelectorAll("select");
@@ -14,12 +15,13 @@ fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`)
       optionElement.text = code;
 
       selectElements.forEach((select) => {
-        select.appendChild(optionElement.cloneNode(true));
+        select.appendChild(optionElement.cloneNode(true));  // cloneNode returns duplicates of the node
+                                                            // copies child text 
       });
     });
   })
   .catch((error) => {
-    console.log("Error fetching currency options:", error);
+    console.log("Error fetching currency options:", error); // runtime errors result in objects being created and thrown
   });
 
 
